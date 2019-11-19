@@ -188,7 +188,7 @@ class H6314:
         self.cic = cic
         self.phi = phi
         self.cis = cis
-    
+
 def getH6314(line):
     h6314 = H6314(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
     return h6314
@@ -206,7 +206,7 @@ class H6315:
         self.crc = crc
         self.argumentPerigee = argumentPerigee
         self.rateRightAscension = rateRightAscension
-    
+
 def getH6315(line):
     h6315 = H6315(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
     return h6315
@@ -224,7 +224,7 @@ class H6316:
         self.codesL2 = codesL2
         self.gpsWeekNumber = gpsWeekNumber
         self.dataFlag =dataFlag 
-    
+
 def getH6316(line):
     h6316 = H6316(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
     return h6316
@@ -250,7 +250,7 @@ class H6317:
         self.health = health
         self.TGD = TGD
         self.issueDataClock = issueDataClock
-    
+
 def getH6317(line):
     h6317 = H6317(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
     return h6317
@@ -285,7 +285,7 @@ class H6321:
         self.a1 = a1
         self.a2 = a2
         self.a3 = a3
-    
+
 def getH6321(line):
     h6321 = H6321(line[6:17],line[18:29],line[30:41],line[42:53])
     return h6321
@@ -301,7 +301,7 @@ class H6322:
         self.b1 = b1
         self.b2 = b2
         self.b3 = b3
-    
+
 def getH6322(line):
     h6322 = H6322(line[6:17],line[18:29],line[30:41],line[42:53])
     return h6322
@@ -318,7 +318,7 @@ class H6330:
         self.dryAirTemperature = dryAirTemperature
         self.wetAirTemperature = wetAirTemperature
         self.relativeHumidity = relativeHumidity
-    
+
 def getH6330(line):
     h6330 = H6330(line[6:12],line[13:19],line[20:26],line[27:33])
     return h6330
@@ -344,7 +344,7 @@ class H65xx:
         self.spheroidalHeight = spheroidalHeight
         self.spheroidalSeparation = spheroidalSeparation
         self.geoidalModel = geoidalModel
-    
+
 def getH65xx(line):
     h65xx = H65xx(line[4:5],line[7:14],line[16:16],line[17:28],line[29:41],line[42:48],line[49:55],line[56:72])
     return h65xx
@@ -360,7 +360,7 @@ class H66xx:
         self.DCSSystemOperator = DCSSystemOperator
         self.DCSComponentName = DCSComponentName
         self.DCSComponentDescription = DCSComponentDescription
-    
+
 def getH66xx(line):
     h66xx = H66xx(line[4:5],line[7:24],line[25:43],line[44:80])
     return h66xx
@@ -380,7 +380,7 @@ class H67xx:
         self.systemIdentifier = systemIdentifier
         self.ellipsoidHeight = ellipsoidHeight
         self.descriptionSource = descriptionSource
-    
+
 def getH67xx(line):
     h67xx = H67xx(line[4:4],line[5:5],line[6:9],line[10:12],line[13:23],line[24:80])
     return h67xx

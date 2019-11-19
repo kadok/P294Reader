@@ -443,4 +443,3 @@ class T7010:
 def getT7010(line):
     t7010 = T7010(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
     return t7010
-

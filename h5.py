@@ -44,16 +44,17 @@ Located on: ref. number [29,31] I3
 (Local) offset B [41,47] F7.1
 (Local) offset Z [49,55] F6.1'''
 class H51x0:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,vesselReferenceNumber,nodeIdentifier,description,referenceNumber,offsetA,offsetB,offsetZ):
+        self.vesselReferenceNumber = vesselReferenceNumber
+        self.nodeIdentifier = nodeIdentifier
+        self.description = description
+        self.referenceNumber = referenceNumber
+        self.offsetA = offsetA
+        self.offsetB = offsetB
+        self.offsetZ = offsetZ
     
 def getH51x0(line):
-    h51x0 = H51x0(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h51x0 = H51x0(line[4:4],line[7:10],line[12:27],line[29:31],line[33:39],line[41:47],line[49:55])
     return h51x0
 
 '''H52## Observation Definition
@@ -67,16 +68,19 @@ Measurement Unit Code [44,45] I2
 Positioning system identifier [47,49] I3
 Positioning system description [51,80] A30 free text'''
 class H52xx:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,observationType,observationId,observationDescription,atNodeId,toNode1Id,toNode2Id,mesaurementUnit,positioningSystemId,positioningSystemDescription):
+        self.observationType = observationType
+        self.observationId = observationId
+        self.observationDescription = observationDescription
+        self.atNodeId = atNodeId
+        self.toNode1Id = toNode1Id
+        self.toNode2Id = toNode2Id
+        self.mesaurementUnit = mesaurementUnit
+        self.positioningSystemId = positioningSystemId
+        self.positioningSystemDescription = positioningSystemDescription
     
 def getH52xx(line):
-    h52xx = H52xx(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h52xx = H52xx(line[4:5],line[7:10],line[12:27],line[29:32],line[34:37],line[39:42],line[44:45],line[47:49],line[51:80])
     return h52xx
 
 '''H5306 Differential Observation - follow up record
@@ -85,16 +89,14 @@ Observation 1 identifier [12,15] I4
 Observation 2 identifier [17,20] I4
 Differential observation description [22,80] A59 free text'''
 class H5306:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,differentialObservationId,observationId1,observationId2,differentialObservationDescription):
+        self.differentialObservationId = differentialObservationId
+        self.observationId1 = observationId1
+        self.observationId2 = observationId2
+        self.differentialObservationDescription = differentialObservationDescription
     
 def getH5306(line):
-    h5306 = H5306(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h5306 = H5306(line[7:10],line[12:15],line[17:20],line[22:80])
     return h5306
 
 '''H5307 Composite Range - follow up record
@@ -103,16 +105,13 @@ Observation identifier [ 7,10] I4
 Positive (addition) or negative (subtraction)? [17,17] I1 0 = negative range section 1 = positive range section
 May be repeated at [19,24], [26,31], [33,38], etc.; the Observation identifier is not repeated.'''
 class H5307:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,observationIdentifier,nodeIdentifier,rangeSection):
+        self.observationIdentifier = observationIdentifier
+        self.nodeIdentifier = nodeIdentifier
+        self.rangeSection = rangeSection
     
 def getH5307(line):
-    h5307 = H5307(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h5307 = H5307(line[7:10],line[12:15],line[19:80])
     return h5307
 
 '''H54## Observation Definition (cont'd)
@@ -128,32 +127,33 @@ Variable (C-O) [66,73] N8
 A priori standard deviation [75,78] N4
 Quality indicator type used in (inter-)event records [80,80] I1 0 = no qual. info recorded 1 = standard deviation 2 = signal/noise ratio 3 = system specific 4 = subjective scale'''
 class H54xx:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,observationType,observationId,propagationSpeed,lanewidthOn,length,lanewidthFrequency,scaleFactor,fixedSystem,variable,standardDeviation,qualityIndicatorType):
+        self.observationType = observationType
+        self.observationId = observationId
+        self.propagationSpeed = propagationSpeed
+        self.lanewidthOn = lanewidthOn
+        self.length = length
+        self.lanewidthFrequency = lanewidthFrequency
+        self.scaleFactor = scaleFactor
+        self.fixedSystem = fixedSystem
+        self.variable = variable
+        self.standardDeviation = standardDeviation
+        self.qualityIndicatorType = qualityIndicatorType
     
 def getH54xx(line):
-    h54xx = H54xx(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h54xx = H54xx(line[4:5],line[7:10],line[12:23],line[25:36],line[38:38],line[40:40],line[42:53],line[55:64],line[66:73],line[75:78],line[80:80])
     return h54xx
 
 '''H5500 Definition of System Specific Quality Indicator
 Positioning system identifier [ 7, 9] I3
 Definition of quality indicator [11,80] A70 free text'''
 class H5500:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,positioningSystemId,definitionQualityIndicator):
+        self.positioningSystemId = positioningSystemId
+        self.definitionQualityIndicator = definitionQualityIndicator
     
 def getH5500(line):
-    h5500 = H5500(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h5500 = H5500(line[7:9],line[11:80])
     return h5500
 
 '''H56@0 Instrument Correction
@@ -164,14 +164,14 @@ Positioning system identifier [12,14] I3
 Instrument correction [16,26] N11
 Instrument description (serial number, etc) [28,80] A53 free text'''
 class H56x0:
-    def __init__(self,satelliteReferenceNumber,name,datum,systemOperator,systemName,softwareDescription):
-        self.satelliteReferenceNumber = satelliteReferenceNumber
-        self.name = name
-        self.datum = datum
-        self.systemOperator = systemOperator
-        self.systemName = systemName
-        self.softwareDescription = softwareDescription
+    def __init__(self,vesselNumber,stationType,nodeIdentifier,positioningSystemId,instrumentCorrection,instrumentDescription):
+        self.vesselNumber = vesselNumber
+        self.stationType = stationType
+        self.nodeIdentifier = nodeIdentifier
+        self.positioningSystemId = positioningSystemId
+        self.instrumentCorrection = instrumentCorrection
+        self.instrumentDescription = instrumentDescription
     
 def getH56x0(line):
-    h56x0 = H56x0(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h56x0 = H56x0(line[4:4],line[5:5],line[7:10],line[12:14],line[16:26],line[28:80])
     return h56x0

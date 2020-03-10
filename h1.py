@@ -11,7 +11,7 @@ class H10x0:
         self.description = description
 
 def getH10x0(line):
-    h10x0 = H10x0(line[4:4],line[7:10],line[12:80])
+    h10x0 = H10x0(line[3:4],line[6:10],line[11:80])
     return h10x0
 
 '''H11@0 Steered Point Definition
@@ -23,7 +23,7 @@ class H11x0:
         self.description = description
 
 def getH11x0(line):
-    h11x0 = H11x0(line[4:4],line[7:80])
+    h11x0 = H11x0(line[3:4],line[6:80])
     return h11x0
 
 '''H12@0 Onboard Navigation System Description
@@ -35,7 +35,7 @@ class H12x0:
         self.systemDetails = systemDetails
 
 def getH12x0(line):
-    h12x0 = H12x0(line[4:4],line[7:80])
+    h12x0 = H12x0(line[3:4],line[6:80])
     return h12x0
 
 '''H12@1 Definition of Quality Indicators for Field Positioning Derived Data
@@ -49,7 +49,7 @@ class H12x1:
         self.definitionQualityIndicatorType = definitionQualityIndicatorType
 
 def getH12x1(line):
-    h12x1 = H12x1(line[4:4],line[7:8],line[10:80])
+    h12x1 = H12x1(line[3:4],line[6:8],line[9:80])
     return h12x1
 
 '''H13@0 Vessel Time System Definition
@@ -63,7 +63,7 @@ class H13x0:
         self.timeCorrectionVesselTimeSystem = timeCorrectionVesselTimeSystem
 
 def getH13x0(line):
-    h13x0 = H13x0(line[4:4],line[7:12],line[14:21])
+    h13x0 = H13x0(line[3:4],line[6:12],line[13:21])
     return h13x0
 
 '''H14@# Echo Sounder Definition
@@ -94,7 +94,7 @@ class H14xy:
         self.echoSounderDescription = echoSounderDescription
 
 def getH14xy(line):
-    h14xy = H14xy(line[4:4],line[5:5],line[7:13],line[15:21],line[23:28],line[30:36],line[38:44],line[46:46],line[47:47],line[48:48],line[50:80])
+    h14xy = H14xy(line[3:4],line[4:5],line[6:13],line[14:21],line[22:28],line[29:36],line[37:44],line[45:46],line[46:47],line[47:48],line[49:80])
     return h14xy
 
 '''H1500 Observed Velocity of Sound - Definitions
@@ -122,7 +122,7 @@ class H1500:
         self.instrumentDescription = instrumentDescription
 
 def getH1500(line):
-    h1500 = H1500(line[7:8],line[10:17],line[19:22],line[24:35],line[36:47],line[48:48],line[49:49],line[50:50],line[51:51],line[53:80])
+    h1500 = H1500(line[6:8],line[9:17],line[18:22],line[23:35],line[35:47],line[47:48],line[48:49],line[49:50],line[50:51],line[52:80])
     return h1500
 
 '''H1501 Observed Velocity of Sound - Profile
@@ -143,7 +143,7 @@ class H1501:
         self.observation2 = observation2
 
 def getH1501(line):
-    h1501 = H1501(line[7:8],line[10:15],line[16:21],line[22:26],line[27:31],line[33:54],line[56:77])
+    h1501 = H1501(line[6:8],line[9:15],line[15:21],line[21:26],line[26:31],line[32:54],line[55:77])
     return h1501
 
 '''H16@0 USBL System Definition
@@ -173,7 +173,7 @@ class H16x0:
         self.reductionShips = reductionShips
 
 def getH16x0(line):
-    h16x0 = H16x0(line[4:4],line[7:7],line[9:9],line[11:11],line[12:12],line[13:13],line[14:14],line[15:15],line[16:16],line[17,17])
+    h16x0 = H16x0(line[3:4],line[6:7],line[8:9],line[10:11],line[11:12],line[12:13],line[13:14],line[14:15],line[15:16],line[16,17])
     return h16x0
 
 '''H16@1 USBL System Definition (continued)
@@ -209,7 +209,7 @@ class H16x1:
         self.turnAroundDelay = turnAroundDelay
 
 def getH16x1(line):
-    h16x1 = H16x1(line[4:4],line[7:7],line[9:12],line[14:20],line[22:28],line[30:35],line[37:41],line[43:47],line[49:53],line[55:61],line[63:69],line[71:71],line[73:80])
+    h16x1 = H16x1(line[3:4],line[6:7],line[8:12],line[13:20],line[21:28],line[29:35],line[36:41],line[42:47],line[48:53],line[54:61],line[62:69],line[70:71],line[72:80])
     return h16x1
 
 '''H16@2 Definition of Quality Indicator Type for USBL
@@ -224,7 +224,7 @@ class H16x2:
         self.definitionQualityIndicatorType = definitionQualityIndicatorType
 
 def getH16x2(line):
-    h16x2 = H16x2(line[4:4],line[7:7],line[9:80])
+    h16x2 = H16x2(line[3:4],line[6:7],line[8:80])
     return h16x2
 
 '''H17@0 Pitch,Roll and Heave Sensor Definitions
@@ -265,8 +265,8 @@ class H17x0:
         self.systemDescription = systemDescription
 
 def getH17x0(line):
-    h17x0 = H17x0(line[4:4],line[7:7],line[9:9],line[10:10],line[11:11],line[12:12],line[13:13],
-    line[15:22],line[24:31],line[33:33],line[34:34],line[36:42],line[44:50],line[52:58],line[60:80])
+    h17x0 = H17x0(line[3:4],line[6:7],line[8:9],line[9:10],line[10:11],line[11:12],line[12:13],
+    line[14:22],line[23:31],line[32:33],line[33:34],line[35:42],line[43:50],line[51:58],line[59:80])
     return h17x0
 
 
@@ -281,5 +281,5 @@ class H17x1:
         self.definitionQualityIndicatorType = definitionQualityIndicatorType
 
 def getH17x1(line):
-    h17x1 = H17x1(line[4:4],line[7:7],line[9:80])
+    h17x1 = H17x1(line[3:4],line[6:7],line[8:80])
     return h17x1

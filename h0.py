@@ -31,7 +31,7 @@ class H0001:
         self.endDateSurvey = endDateSurvey
     
 def getH0001(line):
-    h0001 = H0001(line[5:18],line[28:36],line[37:62],line[64:71],line[73:80])
+    h0001 = H0001(line[5:18],line[28:36],line[37:62],line[63:71],line[72:80])
     return h0001
 
 '''H0002 Project Description
@@ -149,8 +149,9 @@ class H00x8:
         self.numberAddtionalWaypoints = numberAddtionalWaypoints
     
 def getH00X8(line):
-    h00x8 = H00x8(line[4:4],line[6:28],line[30:30],line[32:32],line[34:45],line[46:56],
-    line[34:44],line[46:56],line[45:45],line[57:57],line[66:68],line[70:75],line[77:77],line[79:80])
+    h00x8 = H00x8(line[3:4],line[5:28],line[29:30],line[31:32],line[33:45],line[45:57],
+    #or
+    line[33:44],line[45:56],line[44:45],line[56:57],line[65:68],line[69:75],line[76:77],line[79:80])
     return h00x8
 
 '''H00@9 Additional Waypoint Definitions
@@ -176,7 +177,9 @@ class H00x9:
         self.E = E
     
 def getH00x9(line):
-    h00x9 = H00x9(line[4:4],line[7:7],line[9:11],line[13:24],line[26:37],line[13:23],line[24:24],line[26:36],line[37:37])
+    h00x9 = H00x9(line[3:4],line[6:7],line[8:11],line[12:24],line[25:37],
+    #or
+    line[12:23],line[23:24],line[25:36],line[36:37])
     return h00x9
 
 '''C000x Comments:
@@ -194,7 +197,7 @@ class C000x:
         self.addtionalInformation = addtionalInformation
     
 def getC000x(line):
-    c000x = C000x(line[5:5],line[6:80])
+    c000x = C000x(line[4:5],line[5:80])
     return c000x
 
 
@@ -213,7 +216,7 @@ class H0100:
         self.magneticVariationSource = magneticVariationSource
     
 def getH0100(line):
-    h0100 = H0100(line[7:14],line[16:19],line[21:21],line[23:80])
+    h0100 = H0100(line[6:14],line[15:19],line[20:21],line[22:80])
     return h0100
 
 '''H0101 Magnetic Variation - Grid Data
@@ -243,7 +246,9 @@ class H0101:
         self.variationPoint = variationPoint
     
 def getH0101(line):
-    h0101 = H0101(line[7:10],line[12:23],line[25:36],line[12:22],line[23:23],line[25:35],line[36:36],line[38:44],line[46:51])
+    h0101 = H0101(line[6:10],line[11:23],line[24:36],
+    #or
+    line[11:22],line[22:23],line[24:35],line[35:36],line[37:44],line[45:51])
     return h0101
 
 '''H011# Datum and Spheroid Definitions
@@ -263,7 +268,7 @@ class H011x:
         self.inverseFlattening = inverseFlattening
     
 def getH011x(line):
-    h011x = H011x(line[5:5],line[7:24],line[25:43],line[44:55],line[57:68],line[70:80])
+    h011x = H011x(line[4:5],line[6:24],line[24:43],line[43:55],line[56:68],line[69:80])
     return h011x
     
 '''H0120 Seven Parameter Cartesian Datum Shifts
@@ -292,7 +297,7 @@ class H0120:
         self.scaleCorrection = scaleCorrection
     
 def getH0120(line):
-    h0120 = H0120(line[7:7],line[9:9],line[11:11],line[13:22],line[24:33],line[35:44],line[46:53],line[55:62],line[64:71],line[73:80])
+    h0120 = H0120(line[6:7],line[8:9],line[10:11],line[12:22],line[23:33],line[34:44],line[45:53],line[54:62],line[63:71],line[72:80])
     return h0120
 
 '''H0130 Other Datum Shift Parameters
@@ -311,7 +316,7 @@ class H0130:
         self.descriptionConversation = descriptionConversation
     
 def getH0130(line):
-    h0130 = H0130(line[7:7],line[8:8],line[9:11],line[12:13],line[15:80])
+    h0130 = H0130(line[6:7],line[7:8],line[8:11],line[11:13],line[14:80])
     return h0130
 
 '''H0140 Projection Type
@@ -325,7 +330,7 @@ class H0140:
         self.projectionTypeName = projectionTypeName
     
 def getH0140(line):
-    h0140 = H0140(line[7:9],line[11:20],line[22:80])
+    h0140 = H0140(line[6:9],line[10:20],line[21:80])
     return h0140
 
 '''H0150 (Universal) Transverse Mercator Projection
@@ -349,7 +354,7 @@ class H0150:
         self.scaleFactor = scaleFactor
     
 def getH0150(line):
-    h0150 = H0150(line[7:8],line[10:21],line[23:34],line[36:46],line[47:47],line[48:58],line[59:59],line[61:72])
+    h0150 = H0150(line[6:8],line[9:21],line[22:34],line[35:46],line[46:47],line[47:58],line[58:59],line[60:72])
     return h0150
 
 '''H0160 Mercator Projection
@@ -371,7 +376,7 @@ class H0160:
         self.scaleFactor = scaleFactor
     
 def getH0160(line):
-    h0160 = H0160(line[7:18],line[20:31],line[33:43],line[44:44],line[45:55],line[56:56],line[58:69])
+    h0160 = H0160(line[6:18],line[19:31],line[32:43],line[43:44],line[44:55],line[55:56],line[57:69])
     return h0160
 
 '''H0170 Lambert Projection
@@ -395,7 +400,7 @@ class H0170:
         self.scaleFactor = scaleFactor
     
 def getH0170(line):
-    h0170 = H0170(line[7:18],line[20:31],line[33:44],line[45:55],line[56:56],line[57:67],line[68:68],line[69:80])
+    h0170 = H0170(line[6:18],line[19:31],line[32:44],line[44:55],line[55:56],line[56:67],line[67:68],line[68:80])
     return h0170
 
 '''H0180 Skew Orthomorphic and Oblique Mercator Projection
@@ -415,7 +420,7 @@ class H0180:
         self.angleGridStartPoint = angleGridStartPoint
     
 def getH0180(line):
-    h0180 = H0180(line[7:18],line[19:30],line[31:42],line[43:54],line[55:66],line[67:78])
+    h0180 = H0180(line[6:18],line[18:30],line[32:42],line[42:54],line[54:66],line[66:78])
     return h0180
 
 '''H0181 Skew Orthomorphic and Oblique Mercator Projection (continued)
@@ -434,7 +439,7 @@ class H0181:
         
     
 def getH0181(line):
-    h0181 = H0181(line[7:18],line[19:29],line[30:30],line[31:41],line[42:42])
+    h0181 = H0181(line[6:18],line[18:29],line[29:30],line[30:41],line[41:42])
     return h0181
 
 '''H0190 Stereographic Projection
@@ -458,7 +463,7 @@ class H0190:
         self.standardParallel = standardParallel
     
 def getH0190(line):
-    h0190 = H0190(line[7:18],line[19:30],line[32:42],line[43:43],line[44:54],line[55:55],line[56:67],line[69:80])
+    h0190 = H0190(line[6:18],line[18:30],line[31:42],line[42:43],line[43:54],line[54:55],line[55:67],line[68:80])
     return h0190
 
 '''H0199 Any Other Projection
@@ -472,7 +477,7 @@ class H0199:
         self.mapProjectionParameters = mapProjectionParameters
     
 def getH0199(line):
-    h0199 = H0199(line[7:9],line[10:11],line[13:80])
+    h0199 = H0199(line[6:9],line[9:11],line[12:80])
     return h0199
 
 
@@ -498,7 +503,7 @@ class H0200:
         self.offsetAngles = offsetAngles
     
 def getH0200(line):
-    h0200 = H0200(line[7:7],line[9:10],line[12:13],line[15:15],line[17:17],line[19:19],line[21:21])
+    h0200 = H0200(line[6:7],line[8:10],line[11:13],line[14:15],line[16:17],line[18:19],line[20:21])
     return h0200
 
 '''H021@ Vessel Summary Information
@@ -529,7 +534,7 @@ class H021x:
         self.numberNetworkNodes = numberNetworkNodes
     
 def getH021x(line):
-    h021x = H021x(line[5:5],line[6:40],line[43:44],line[50:51],line[53:54],line[56:57],line[59:59],line[61:61],line[63:63],line[65:66],line[68:70])
+    h021x = H021x(line[4:5],line[5:40],line[42:44],line[49:51],line[52:54],line[55:57],line[58:59],line[60:61],line[62:63],line[64:66],line[67:70])
     return h021x
 
 '''H022@ Streamer Summary Information
@@ -556,7 +561,7 @@ class H022x:
         self.numberSeismicReceiverGroups = numberSeismicReceiverGroups
     
 def getH022x(line):
-    h022x = H022x(line[5:5],line[6:40],line[42:44],line[46:48],line[56:57],line[68:70],line[72:73],line[75:76],line[78:80])
+    h022x = H022x(line[4:5],line[5:40],line[41:44],line[45:48],line[55:57],line[67:70],line[71:73],line[74:76],line[77:80])
     return h022x
 
 '''H023@ Gun Array Summary Information
@@ -581,7 +586,7 @@ class H023x:
         self.numberDepthSensors = numberDepthSensors
     
 def getH023x(line):
-    h023x = H023x(line[5:5],line[6:40],line[42:44],line[46:48],line[56:57],line[65:66],line[68:70],line[75:76])
+    h023x = H023x(line[4:5],line[5:40],line[41:44],line[45:48],line[55:57],line[64:66],line[67:70],line[74:76])
     return h023x
 
 '''H024@ Towed Buoy Summary Information
@@ -604,5 +609,5 @@ class H024x:
         self.numberNetworkNodes = numberNetworkNodes
     
 def getH024x(line):
-    h024x = H024x(line[5:5],line[6:40],line[42:44],line[46:48],line[56:57],line[65:66],line[68:70])
+    h024x = H024x(line[4:5],line[5:40],line[41:44],line[45:48],line[55:57],line[64:66],line[67:70])
     return h024x

@@ -38,7 +38,7 @@ class H31xx:
         self.depthUnits = depthUnits
 
 def getH31xx(line):
-    h31xx = H31xx(line[4:4],line[7:9],line[11:17],line[19:25],line[27:32],line[34:40],line[42:48],line[50:55],line[57:63],line[64:70],line[72:77],line[78:78],line[79:79],line[80:80]])
+    h31xx = H31xx(line[3:4],line[6:9],line[10:17],line[18:25],line[26:32],line[33:40],line[41:48],line[49:55],line[56:63],line[63:70],line[71:77],line[77:78],line[78:79],line[79:80])
     return h31xx
 
 '''H31@1 Individual Gun Definition
@@ -52,7 +52,7 @@ Gun volume [38,43] I6
 May be repeated for one more gun in the same array at [45,77]; the gun array reference number is not repeated.
 Record may be repeated.'''
 class H31x1:
-    def __init__(self,vesselReferenceNumber,gunArrayReferenceNumber,gunReference,localOffsetA,localOffsetB,localOffsetZ,gunVolume):
+    def __init__(self,vesselReferenceNumber,gunArrayReferenceNumber,gunReference,localOffsetA,localOffsetB,localOffsetZ,gunVolume,repeated):
         self.vesselReferenceNumber = vesselReferenceNumber
         self.gunArrayReferenceNumber = gunArrayReferenceNumber
         self.gunReference = gunReference
@@ -60,9 +60,10 @@ class H31x1:
         self.localOffsetB = localOffsetB
         self.localOffsetZ = localOffsetZ
         self.gunVolume = gunVolume
+        self.repeated = repeated
 
 def getH31x1(line):
-    h31x1 = H31x1(line[4:4],line[7:9],line[11:13],line[15:21],line[23:29],line[31:36],line[38:77])
+    h31x1 = H31x1(line[3:4],line[6:9],line[10:13],line[14:21],line[22:29],line[30:36],line[37:43],line[44:77])
     return h31x1
 
 '''H32@0 Description of Gun Array Depth Sensors
@@ -78,7 +79,7 @@ class H32x0:
         self.descriptionDepthSensors = descriptionDepthSensors
 
 def getH32x0(line):
-    h32x0 = H32x0(line[4:4],line[7:9],line[11:11],line[13:80])
+    h32x0 = H32x0(line[3:4],line[6:9],line[10:11],line[12:80])
     return h32x0
 
 '''H32@1 Gun Array Depth Sensor Definitions
@@ -92,7 +93,7 @@ Depth correction (C-O) [39,44] F6.1
 May be repeated for one more depth sensor on the same gun array at [46,79]; the gun array number is not repeated.
 Record may be repeated.'''
 class H32x1:
-    def __init__(self,vesselReferenceNumber,gunArrayReferenceNumber,sensorNumber,sensorSerialNumber,localOffsetA,localOffsetB,depthCorrection):
+    def __init__(self,vesselReferenceNumber,gunArrayReferenceNumber,sensorNumber,sensorSerialNumber,localOffsetA,localOffsetB,depthCorrection,repeated):
         self.vesselReferenceNumber = vesselReferenceNumber
         self.gunArrayReferenceNumber = gunArrayReferenceNumber
         self.sensorNumber = sensorNumber
@@ -100,9 +101,10 @@ class H32x1:
         self.localOffsetA = localOffsetA
         self.localOffsetB = localOffsetB
         self.depthCorrection = depthCorrection
+        self.repeated = repeated
 
 def getH32x1(line):
-    h32x1 = H32x1(line[4:4],line[7:9],line[11:80],line[4:4],line[7:9],line[11:80],line[39:79])
+    h32x1 = H32x1(line[3:4],line[6:9],line[10:12],line[13:21],line[22:29],line[30:37],line[38:44],line[45:79])
     return h32x1
 
 '''H32@2 Definition of Quality Indicator Type for Gun Array Depth Sensors
@@ -117,7 +119,7 @@ class H32x2:
         self.definitionQualityIndicatorType = definitionQualityIndicatorType
 
 def getH32x2(line):
-    h32x2 = H32x2(line[4:4],line[7:9],line[11:80])
+    h32x2 = H32x2(line[3:4],line[6:9],line[10:80])
     return h32x2
 
 '''H33@0 Definition of Intended Gun Firing Sequence
@@ -135,7 +137,7 @@ class H33x0:
         self.activeGunMask = activeGunMask
 
 def getH33x0(line):
-    h33x0 = H33x0(line[4:4],line[7:9],line[11:13],line[15:80])
+    h33x0 = H33x0(line[3:4],line[6:9],line[10:13],line[14:80])
     return h33x0
 
 '''H34@0 Gun Array Pressure Sensor Definitions
@@ -155,7 +157,7 @@ class H34x0:
         self.sensorCorrection = sensorCorrection
 
 def getH34x0(line):
-    h34x0 = H34x0(line[4:4],line[7:9],line[11:13],line[15:22],line[24:66])
+    h34x0 = H34x0(line[3:4],line[6:9],line[10:13],line[14:22],line[23:66])
     return h34x0
 
 '''H34@1 Description of Gun Array Pressure Sensors
@@ -169,5 +171,5 @@ class H34x1:
         self.descriptionGunArrayPressureSensors = descriptionGunArrayPressureSensors
 
 def getH34x1(line):
-    h34x1 = H34x1(line[4:4],line[7:9],line[11:80])
+    h34x1 = H34x1(line[3:4],line[6:9],line[10:80])
     return h34x1

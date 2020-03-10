@@ -30,7 +30,7 @@ class H5000:
         self.heightDatum = heightDatum
     
 def getH5000(line):
-    h5000 = H5000(line[7:10],line[12:27],line[29:29],line[31:42],line[44:55],line[31:41],line[42:42],line[44:54],line[55:55],line[57:63],line[65:65],line[67:67])
+    h5000 = H5000(line[6:10],line[11:27],line[28:29],line[30:42],line[43:55],line[30:41],line[41:42],line[43:54],line[54:55],line[56:63],line[64:65],line[66:67])
     return h5000
 
 
@@ -54,7 +54,7 @@ class H51x0:
         self.offsetZ = offsetZ
     
 def getH51x0(line):
-    h51x0 = H51x0(line[4:4],line[7:10],line[12:27],line[29:31],line[33:39],line[41:47],line[49:55])
+    h51x0 = H51x0(line[3:4],line[6:10],line[11:27],line[28:31],line[32:39],line[40:47],line[48:55])
     return h51x0
 
 '''H52## Observation Definition
@@ -80,7 +80,7 @@ class H52xx:
         self.positioningSystemDescription = positioningSystemDescription
     
 def getH52xx(line):
-    h52xx = H52xx(line[4:5],line[7:10],line[12:27],line[29:32],line[34:37],line[39:42],line[44:45],line[47:49],line[51:80])
+    h52xx = H52xx(line[3:5],line[6:10],line[11:27],line[28:32],line[33:37],line[38:42],line[43:45],line[46:49],line[50:80])
     return h52xx
 
 '''H5306 Differential Observation - follow up record
@@ -96,7 +96,7 @@ class H5306:
         self.differentialObservationDescription = differentialObservationDescription
     
 def getH5306(line):
-    h5306 = H5306(line[7:10],line[12:15],line[17:20],line[22:80])
+    h5306 = H5306(line[6:10],line[11:15],line[16:20],line[21:80])
     return h5306
 
 '''H5307 Composite Range - follow up record
@@ -111,7 +111,7 @@ class H5307:
         self.rangeSection = rangeSection
     
 def getH5307(line):
-    h5307 = H5307(line[7:10],line[12:15],line[19:80])
+    h5307 = H5307(line[6:10],line[11:15],line[18:80])
     return h5307
 
 '''H54## Observation Definition (cont'd)
@@ -141,7 +141,7 @@ class H54xx:
         self.qualityIndicatorType = qualityIndicatorType
     
 def getH54xx(line):
-    h54xx = H54xx(line[4:5],line[7:10],line[12:23],line[25:36],line[38:38],line[40:40],line[42:53],line[55:64],line[66:73],line[75:78],line[80:80])
+    h54xx = H54xx(line[3:5],line[6:10],line[11:23],line[24:36],line[37:38],line[39:40],line[41:53],line[54:64],line[65:73],line[74:78],line[79:80])
     return h54xx
 
 '''H5500 Definition of System Specific Quality Indicator
@@ -153,7 +153,7 @@ class H5500:
         self.definitionQualityIndicator = definitionQualityIndicator
     
 def getH5500(line):
-    h5500 = H5500(line[7:9],line[11:80])
+    h5500 = H5500(line[6:9],line[10:80])
     return h5500
 
 '''H56@0 Instrument Correction
@@ -173,5 +173,5 @@ class H56x0:
         self.instrumentDescription = instrumentDescription
     
 def getH56x0(line):
-    h56x0 = H56x0(line[4:4],line[5:5],line[7:10],line[12:14],line[16:26],line[28:80])
+    h56x0 = H56x0(line[3:4],line[4:5],line[6:10],line[11:14],line[15:26],line[27:80])
     return h56x0

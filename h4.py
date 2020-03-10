@@ -28,5 +28,5 @@ class H41x0:
         self.descriptionTowedBuoy = descriptionTowedBuoy
 
 def getH41x0(line):
-    h41x0 = H41x0(line[4:4],line[7:9],line[11:13],line[15:21],line[23:29],line[31:36],line[39:45],line[47:53],line[55:60],line[62:80])
+    h41x0 = H41x0(line[3:4],line[6:9],line[10:13],line[14:21],line[22:29],line[30:36],line[38:45],line[46:53],line[54:60],line[61:80])
     return h41x0

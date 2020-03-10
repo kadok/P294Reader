@@ -60,8 +60,8 @@ class E12x0:
         self.processingDetails = processingDetails
 
 def getE12x0(line):
-    e12x0 = E12x0(line[4:4],line[6:7],line[8:11],line[12:12],line[13:24],line[25:36],line[13:23],
-    line[24:24],line[25:35],line[36:36],line[37:42],line[43:43],line[44:47],line[48:51],line[52:55],line[56:80])
+    e12x0 = E12x0(line[3:4],line[5:7],line[7:11],line[11:12],line[12:24],line[24:36],line[12:23],
+    line[23:24],line[24:35],line[35:36],line[36:42],line[42:43],line[43:47],line[47:51],line[51:55],line[55:80])
     return e12x0
 
 '''E14@0 Echo Sounder Data
@@ -82,7 +82,7 @@ class E14x0:
         self.echoSounderReading5 = echoSounderReading5
 
 def getE14x0(line):
-    e14x0 = E14x0(line[4:4],line[6:6],line[7:12],line[21:27],line[36,42],line[51:57],line[66:72])
+    e14x0 = E14x0(line[3:4],line[5:6],line[6:12],line[20:27],line[35,42],line[50:57],line[65:72])
     return e14x0
 
 '''E16@0 USBL Acoustic Data
@@ -106,7 +106,7 @@ class E16x0:
         self.qualityIndicator = qualityIndicator2
 
 def getE16x0(line):
-    e16x0 = E16x0(line[4:4],line[6:6],line[7:10],line[11:17],line[18,24],line[25:31],line[32:35],line[44:73])
+    e16x0 = E16x0(line[3:4],line[5:6],line[6:10],line[10:17],line[17,24],line[24:31],line[31:35],line[43:73])
     return e16x0
 
 
@@ -133,7 +133,7 @@ class E22x0:
         self.compassReading5 = compassReading5
 
 def getE22x0(line):
-    e22x0 = E22x0(line[4:4],line[6:8],line[9:12],line[13:17],line[18,21],line[22:34],line[35:47],line[48:60],line[61:73])
+    e22x0 = E22x0(line[3:4],line[5:8],line[8:12],line[12:17],line[17,21],line[21:34],line[34:47],line[47:60],line[60:73])
     return e22x0
 
 '''E24@1 Auxiliary Seismic Channel Data
@@ -148,7 +148,7 @@ class E24x1:
         self.timeObserved = timeObserved
 
 def getE24x1(line):
-    e24x1 = E24x1(line[4:4],line[6:9],line[10:77])
+    e24x1 = E24x1(line[3:4],line[5:9],line[9:77])
     return e24x1
 
 
@@ -172,7 +172,7 @@ class E32x0:
         self.depthSensors = depthSensors
         
 def getE32x0(line):
-    e32x0 = E32x0(line[4:4],line[6:8],line[9:10],line[11:15],line[16:19],line[20:74])
+    e32x0 = E32x0(line[3:4],line[5:8],line[8:10],line[10:15],line[15:19],line[19:74])
     return e32x0
 
 '''E33@0 Gun Fired Mask
@@ -189,7 +189,7 @@ class E33x0:
         self.gunsFiredMask = gunsFiredMask
         
 def getE33x0(line):
-    e33x0 = E33x0(line[4:4],line[6:8],line[9:11],line[15:80])
+    e33x0 = E33x0(line[3:4],line[5:8],line[8:11],line[14:80])
     return e33x0
 
 ''' E34@0 Gun Pressure Sensor Data
@@ -214,7 +214,7 @@ class E34x0:
         self.p7 = p7
 
 def getE34x0(line):
-    e34x0 = E34x0(line[4:4],line[5:8],line[8:11],line[11:17],line[17:26],line[26:35],line[36:44],line[45:53],line[54:62],line[63:71],line[71:80])
+    e34x0 = E34x0(line[3:4],line[4:8],line[7:11],line[10:17],line[16:26],line[25:35],line[35:44],line[44:53],line[53:62],line[62:71],line[71:80])
     return e34x0
 
 
@@ -237,7 +237,7 @@ class E52xy:
         self.qualityIndicator = qualityIndicator
         
 def getE52xy(line):
-    e52xy = E52xy(line[4:5],line[6:9],line[10:19],line[20:73])
+    e52xy = E52xy(line[3:5],line[5:9],line[9:19],line[19:73])
     return e52xy
 
 '''E54## Network Observation Parameters
@@ -251,15 +251,16 @@ May be repeated for one more set of observation parameters at [38,62]:
 - the change in observation parameters relate to the same event time.
 Record may be repeated.'''
 class E54xy:
-    def __init__(self,observationType,observationIdentifier,variable,propagationSpeed,flagSpeed):
+    def __init__(self,observationType,observationIdentifier,variable,propagationSpeed,flagSpeed, observation):
         self.observationType = observationType
         self.observationIdentifier = observationIdentifier
         self.variable = variable
         self.propagationSpeed = propagationSpeed
         self.flagSpeed = flagSpeed
+        self.observation = observation
         
 def getE54xy(line):
-    e54xy = E54xy(line[4:5],line[6:9],line[10:17],line[18:29],line[30:62])
+    e54xy = E54xy(line[3:5],line[5:9],line[9:17],line[17:29],line[29:30],line[30:62])
     return e54xy
 
 '''E55## Network GPS Observations
@@ -294,7 +295,7 @@ class E55xy:
         self.lostLockIndicator2 = lostLockIndicator2
         
 def getE55xy(line):
-    e55xy = E55xy(line[4:5],line[6:9],line[10:23],line[24:26],line[27:40],line[41:44],line[45:46],line[47:47],line[48:49],line[50:63],line[64:67],line[68:69],line[70:70])
+    e55xy = E55xy(line[3:5],line[5:9],line[9:23],line[23:26],line[26:40],line[40:44],line[44:46],line[46:47],line[47:49],line[49:63],line[63:67],line[67:69],line[69:70])
     return e55xy
 
 '''E56## Network GPS Observations (continuation record)
@@ -337,8 +338,8 @@ class E56xy:
         self.lostLockIndicator3 = lostLockIndicator3
         
 def getE56xy(line):
-    e56xy = E56xy(line[4:5],line[6:9],line[10:11],line[12:25],line[26:29],line[30:31],line[32:32],line[33:34],line[35:48],line[49:52],line[53:54],line[55:55],
-    line[56:57],line[58:71],line[72:75],line[76:77],line[78:78])
+    e56xy = E56xy(line[3:5],line[5:9],line[9:11],line[11:25],line[25:29],line[29:31],line[31:32],line[32:34],line[34:48],line[48:52],line[52:54],line[54:55],
+    line[55:57],line[57:71],line[71:75],line[75:77],line[77:78])
     return e56xy
 
 
@@ -370,7 +371,7 @@ class E620x:
         self.positionCalculationMode = positionCalculationMode
         
 def getE620x(line):
-    e620x = E620x(line[5:5],line[6:9],line[10:10],line[11:22],line[23:34],line[35:40],line[41:41],line[42:61],line[62:70],line[71:72])
+    e620x = E620x(line[4:5],line[5:9],line[9:10],line[10:22],line[22:34],line[34:40],line[40:41],line[41:61],line[61:70],line[70:72])
     return e620x
 
 '''E621# GPS or DGPS Data (continued)
@@ -398,7 +399,7 @@ class E621x:
         self.dops = dops
         
 def getE621x(line):
-    e621x = E621x(line[5:5],line[6:9],line[10:10],line[11:15],line[16:20],line[21:25],line[26:26],line[27:30],line[31:55])
+    e621x = E621x(line[4:5],line[5:9],line[9:10],line[10:15],line[15:20],line[20:25],line[25:26],line[26:30],line[30:55])
     return e621x
 
 '''E6303 TRANSIT Satellite Data
@@ -420,7 +421,7 @@ class E6303:
         self.longitudeDeviation = longitudeDeviation
         
 def getE6303(line):
-    e6303 = E6303(line[6:9],line[10:21],line[22:33],line[34:34],line[35:39],line[40:44])
+    e6303 = E6303(line[5:9],line[9:21],line[21:33],line[33:34],line[34:39],line[39:44])
     return e6303
 
 '''E640# Satellite Data (other systems)
@@ -448,7 +449,7 @@ class E640x:
         self.heightDeviation = heightDeviation
         
 def getE640x(line):
-    e640x = E640x(line[5:5],line[6:9],line[10:21],line[22:33],line[34:39],line[40:40],line[41:45],line[46:50],line[51:55])
+    e640x = E640x(line[4:5],line[5:9],line[9:21],line[21:33],line[33:39],line[39:40],line[40:45],line[45:50],line[50:55])
     return e640x
 
 '''E65## Differential correction data
@@ -474,20 +475,7 @@ class E65xx:
         self.value1 = value1
         self.value2 = value2
         self.value3 = value3
-        
-def getE65xx(line):
-    e65xx = E65xx(line[4:5],line[6:9],line[10:11],line[12:19],line[20:21],line[22:24],line[25:27],line[28:41],line[42:55],line[56:69])
-    return e65xx
-
-'''E65## 00016 DGPS correction,Type 16
-## is the Differential Correction Source (DCS) Identifier.
-Sequence number is required: if full message will not fit in single type 16 record,first part
-goes into sequence 0 and second part into sequence 1.
-Free text [28,72] A45
-This record is analogous to the RTCM type 16 message and may be used for providing
-information about the reference stations used in network solutions.'''
-class E6516:
-    def __init__(self,dcsIdentifier,correctionType,correctionSequence,gpsTime,dcsStatus,iodKey,svPRN,value1):
+    def __init__(self,dcsIdentifier,correctionType,correctionSequence,gpsTime,dcsStatus,iodKey,svPRN,freeText):
         self.dcsIdentifier = dcsIdentifier
         self.correctionType = correctionType
         self.correctionSequence = correctionSequence
@@ -495,11 +483,15 @@ class E6516:
         self.dcsStatus = dcsStatus
         self.iodKey = iodKey
         self.svPRN = svPRN
-        self.value1 = value1
+        self.freeText = freeText
         
-def getE6516(line):
-    e6516 = E6516(line[4:5],line[6:9],line[10:11],line[12:19],line[20:21],line[22:24],line[25:27],line[28:72])
-    return e6516
+def getE65xx(line):
+    correctionType = line[5:9]
+    if (correctionType == "0016"):
+        e65xx = E65xx(line[3:5],line[5:9],line[9:11],line[11:19],line[19:21],line[21:24],line[24:27],line[27:72])
+    else:
+        e65xx = E65xx(line[3:5],line[5:9],line[9:11],line[11:19],line[19:21],line[21:24],line[24:27],line[27:41],line[41:55],line[55:69])
+    return e65xx
 
 #USER DEFINED EVENT DATA
 
@@ -509,20 +501,13 @@ Data field number [ 9,10] I2
 Quality indicator [11,14] N4
 Observation [15,.. ] Nx'''
 class E7010:
-    def __init__(self,gpsType,nodeIdentifier,receiverNumber,latitude,longitude,height,heightDatum,satellitesUsed,
-    referenceStationsUsed,positionCalculationMode):
-        self.gpsType = gpsType
-        self.nodeIdentifier = nodeIdentifier
-        self.receiverNumber = receiverNumber
-        self.latitude = latitude
-        self.longitude = longitude
-        self.height = height
-        self.heightDatum = heightDatum
-        self.satellitesUsed = satellitesUsed
-        self.referenceStationsUsed = referenceStationsUsed
-        self.positionCalculationMode = positionCalculationMode
-        
+    def __init__(self,observationReferenceNumber,dataFieldNumber,qualityIndicator,observation):
+        self.observationReferenceNumber = observationReferenceNumber
+        self.dataFieldNumber = dataFieldNumber
+        self.qualityIndicator = qualityIndicator
+        self.observation = observation
+
 def getE7010(line):
-    e7010 = E7010(line[5:5],line[6:9],line[10:10],line[11:22],line[23:34],line[35:40],line[41:41],line[42:61],line[62:70],line[71:72])
+    e7010 = E7010(line[5:8],line[8:10],line[10:14],line[14:80])
     return e7010
 

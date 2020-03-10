@@ -17,7 +17,7 @@ class H600x:
         self.softwareDescription = softwareDescription
     
 def getH600x(line):
-    h600x = H600x(line[5:5],line[7:14],line[16:16],line[18:35],line[37:46],line[48:80])
+    h600x = H600x(line[4:5],line[6:14],line[15:16],line[17:35],line[36:46],line[47:80])
     return h600x
 
 '''H610# Definition of Differential Reference Stations
@@ -41,7 +41,7 @@ class H610x:
         self.geoidalModel = geoidalModel
     
 def getH610x(line):
-    h610x = H610x(line[5:5],line[6:7],line[9:20],line[22:33],line[35:46],line[48:54],line[56:62],line[64:80])
+    h610x = H610x(line[4:5],line[5:7],line[8:20],line[21:33],line[34:46],line[47:54],line[55:62],line[63:80])
     return h610x
 
 '''H620# Satellite Receiver Definition
@@ -65,7 +65,7 @@ class H620x:
         self.offsetZ = offsetZ
     
 def getH620x(line):
-    h620x = H620x(line[5:5],line[7:10],line[12:12],line[14:16],line[18:24],line[26:32],line[34:39],line[41:80])
+    h620x = H620x(line[4:5],line[6:10],line[11:12],line[13:16],line[16:24],line[25:32],line[33:39],line[40:80])
     return h620x
 
 #GPS PARAMETERS
@@ -82,7 +82,7 @@ class H6300:
         self.clockModel = clockModel
     
 def getH6300(line):
-    h6300 = H6300(line[7:7],line[8:8],line[9:9])
+    h6300 = H6300(line[6:7],line[7:8],line[8:9])
     return h6300
 
 '''H6301 DGPS differential correction recording strategy
@@ -100,7 +100,13 @@ class H6301:
         self.typeDescription = typeDescription
     
 def getH6301(line):
-    h6301 = H6301(line[7:10],line[11:24])
+    #Correction Type and Type Description Lists
+    correctionType = []    
+    typeDescription = []
+    for i in range(6,78,18):
+        correctionType.append(line[i:(i+4)])
+        typeDescription.append(line[(i+4):(i+18)])
+    h6301 = H6301(correctionType,typeDescription)
     return h6301
 
 '''
@@ -132,7 +138,7 @@ class H6311:
         self.timeClock = timeClock
     
 def getH6311(line):
-    h6311 = H6311(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6311 = H6311(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6311
 
 '''H6312 GPS ephemerides, 1
@@ -154,7 +160,7 @@ class H6312:
         self.m0 = m0
     
 def getH6312(line):
-    h6312 = H6312(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6312 = H6312(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6312
 
 '''H6313 GPS ephemerides, 2
@@ -172,7 +178,7 @@ class H6313:
         self.squareA = squareA
     
 def getH6313(line):
-    h6313 = H6313(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6313 = H6313(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6313
 
 '''H6314 GPS ephemerides, 3
@@ -190,7 +196,7 @@ class H6314:
         self.cis = cis
 
 def getH6314(line):
-    h6314 = H6314(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6314 = H6314(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6314
 
 '''H6315 GPS ephemerides, 4
@@ -208,7 +214,7 @@ class H6315:
         self.rateRightAscension = rateRightAscension
 
 def getH6315(line):
-    h6315 = H6315(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6315 = H6315(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6315
 
 '''H6316 GPS ephemerides, 5
@@ -226,7 +232,7 @@ class H6316:
         self.dataFlag =dataFlag 
 
 def getH6316(line):
-    h6316 = H6316(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6316 = H6316(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6316
 
 '''H6317 GPS ephemerides, 6
@@ -252,7 +258,7 @@ class H6317:
         self.issueDataClock = issueDataClock
 
 def getH6317(line):
-    h6317 = H6317(line[6:8],line[9:26],line[27:44],line[45:62],line[63:80])
+    h6317 = H6317(line[5:8],line[8:26],line[26:44],line[44:62],line[62:80])
     return h6317
 
 '''H6320 GPS UTC parameters
@@ -270,7 +276,7 @@ class H6320:
         self.deltaTime = deltaTime
     
 def getH6320(line):
-    h6320 = H6320(line[6:23],line[24:41],line[42:50],line[51:59],line[60:65])
+    h6320 = H6320(line[5:23],line[23:41],line[41:50],line[50:59],line[59:65])
     return h6320
 
 '''H6321 GPS ionospheric model parameters, 1
@@ -287,7 +293,7 @@ class H6321:
         self.a3 = a3
 
 def getH6321(line):
-    h6321 = H6321(line[6:17],line[18:29],line[30:41],line[42:53])
+    h6321 = H6321(line[5:17],line[17:29],line[29:41],line[41:53])
     return h6321
 
 '''H6322 GPS ionospheric model parameters, 2
@@ -303,7 +309,7 @@ class H6322:
         self.b3 = b3
 
 def getH6322(line):
-    h6322 = H6322(line[6:17],line[18:29],line[30:41],line[42:53])
+    h6322 = H6322(line[5:17],line[17:29],line[29:41],line[41:53])
     return h6322
 
 '''H6330 Meteorological data
@@ -320,7 +326,7 @@ class H6330:
         self.relativeHumidity = relativeHumidity
 
 def getH6330(line):
-    h6330 = H6330(line[6:12],line[13:19],line[20:26],line[27:33])
+    h6330 = H6330(line[5:12],line[12:19],line[19:26],line[26:33])
     return h6330
 
 #DGPS DEFINITIONS
@@ -346,7 +352,7 @@ class H65xx:
         self.geoidalModel = geoidalModel
 
 def getH65xx(line):
-    h65xx = H65xx(line[4:5],line[7:14],line[16:16],line[17:28],line[29:41],line[42:48],line[49:55],line[56:72])
+    h65xx = H65xx(line[3:5],line[6:14],line[15:16],line[16:28],line[28:41],line[41:48],line[48:55],line[55:72])
     return h65xx
 
 '''H66## Differential Correction Source Description
@@ -362,7 +368,7 @@ class H66xx:
         self.DCSComponentDescription = DCSComponentDescription
 
 def getH66xx(line):
-    h66xx = H66xx(line[4:5],line[7:24],line[25:43],line[44:80])
+    h66xx = H66xx(line[3:5],line[6:24],line[24:43],line[43:80])
     return h66xx
 
 '''H67@0 Height aiding values
@@ -382,5 +388,5 @@ class H67xx:
         self.descriptionSource = descriptionSource
 
 def getH67xx(line):
-    h67xx = H67xx(line[4:4],line[5:5],line[6:9],line[10:12],line[13:23],line[24:80])
+    h67xx = H67xx(line[3:4],line[4:5],line[5:9],line[9:12],line[12:23],line[23:80])
     return h67xx

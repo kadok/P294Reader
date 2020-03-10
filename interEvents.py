@@ -14,7 +14,16 @@ class T14x0:
         self.timeObservation = timeObservation
 
 def getT14x0(line):
-    t14x0 = T14x0(line[4:4],line[6:6],line[7:12],line[13:79])
+    #Echo Sounder Lists
+    refNumberList = []
+    readingList = []
+    timeObservationList = []
+
+    for i in range(6,79,14):
+        refNumberList.append(line[(i-1):(i)])
+        readingList.append(line[(i+1):(i+6)])
+        timeObservationList.append(line[(i+7):(i+13)])
+    t14x0 = T14x0(line[3:4],refNumberList,readingList,timeObservationList)
     return t14x0
 
 '''T16@0 Inter-event USBL Acoustic Data
@@ -39,7 +48,12 @@ class T16x0:
         self.timeObservation = timeObservation
 
 def getT16x0(line):
-    t16x0 = T16x0(line[4:4],line[6:6],line[7:10],line[11:17],line[18:24],line[25:31],line[32:35],line[36:80])
+    #USBL Acoustic Lists
+    uList = []
+    uList.append(line[0:42])
+    uList.append(line[38:80])
+    t16x0 = T16x0(line[3:4],[uList[0][5:6],uList[1][5:6]],[uList[0][6:10],uList[1][6:10]],[uList[0][10:17],uList[1][10:17]],
+    [uList[0][17:24],uList[1][17:24]],[uList[0][24:31],uList[1][24:31]],[uList[0][31:35],uList[1][31:35]],[uList[0][35:42],uList[1][35:42]])
     return t16x0
 
 '''T17@0 Inter-event Pitch,Roll and Heave Sensor Data
@@ -66,7 +80,7 @@ class T17x0:
         self.timeObservation = timeObservation
 
 def getT17x0(line):
-    t17x0 = T17x0(line[4:4],line[6:6],line[7:16],line[17:26],line[27:36],line[37:40],line[41:44],line[45:48],line[49:55])
+    t17x0 = T17x0(line[3:4],line[5:6],line[6:16],line[16:26],line[26:36],line[36:40],line[40:44],line[44:48],line[48:55])
     return t17x0
 
 
@@ -88,7 +102,18 @@ class T52xx:
         self.timeObservation = timeObservation
 
 def getT52xx(line):
-    t52xx = T52xx(line[4:5],line[6:9],line[10:19],line[20:23],line[24:80])
+    #Observation Lists
+    observationIdentifierList = []
+    observationList = []
+    qualityIndicatorList = []
+    timeObservationList = []
+
+    for i in range(6,80,25):
+        observationIdentifierList.append(line[i-1:(i+3)])
+        observationList.append(line[i+3:(i+13)])
+        qualityIndicatorList.append(line[i+13:(i+17)])
+        timeObservationList.append(line[i+17:(i+24)])
+    t52xx = T52xx(line[3:4],observationIdentifierList,observationList,qualityIndicatorList,timeObservationList)
     return t52xx
 
 '''T54## Inter-event Network Observation Parameters
@@ -110,7 +135,12 @@ class T54xx:
         self.timeObservation = timeObservation
 
 def getT54xx(line):
-    t54xx = T54xx(line[4:5],line[6:9],line[10:17],line[18:29],line[30:30],line[31:69])
+    #Observation Lists
+    oList = []
+    oList.append(line[0:37])
+    oList.append(line[32:69])
+    t54xx = T54xx(oList[3:4],[oList[0][5:9],oList[1][5:9]],[oList[0][9:17],oList[1][9:17]],[oList[0][17:29],oList[1][17:29]],
+    [oList[0][29:30],oList[1][29:30]],[oList[0][30:37],oList[1][30:37]])
     return t54xx
 
 '''T55## Inter-event network GPS Observations
@@ -147,8 +177,8 @@ class T55xx:
         self.systemReceipt1 = systemReceipt1
 
 def getT55xx(line):
-    t55xx = T55xx(line[4:5],line[6:9],line[10:23],line[24:26],line[27:40],line[41:44],line[45:46],
-    line[47:47],line[48:49],line[50:63],line[64:67],line[68:69],line[70:70],line[71:77])
+    t55xx = T55xx(line[3:5],line[5:9],line[9:23],line[23:26],line[26:40],line[40:44],line[44:46],
+    line[46:47],line[47:49],line[49:63],line[63:67],line[67:69],line[69:70],line[70:77])
     return t55xx
 
 '''T56## Network GPS Observations (continuation record)
@@ -192,9 +222,9 @@ class T56xx:
         self.lockIndicator2 = lockIndicator2
 
 def getT56xx(line):
-    t56xx = T56xx(line[4:5],line[6:9],line[10:11],line[12:25],line[26:29],line[30:31],line[32:32],
-    line[33:34],line[35:48],line[59:52],line[53:54],line[55:55],
-    line[56:57],line[58:71],line[72:75],line[76:77],line[78:78])
+    t56xx = T56xx(line[3:5],line[5:9],line[9:11],line[11:25],line[25:29],line[29:31],line[31:32],
+    line[32:34],line[34:48],line[58:52],line[52:54],line[54:55],
+    line[55:57],line[57:71],line[71:75],line[75:77],line[77:78])
     return t56xx
 
 
@@ -228,7 +258,7 @@ class T620x:
         self.timeObservation = timeObservation
 
 def getT620x(line):
-    t620x = T620x(line[5:5],line[6:9],line[10:10],line[11:22],line[23:34],line[35:40],line[41:41],line[42:61],line[62:70],line[71:72],line[73:79])
+    t620x = T620x(line[4:5],line[5:9],line[9:10],line[10:22],line[22:34],line[34:40],line[40:41],line[41:61],line[61:70],line[70:72],line[72:79])
     return t620x
 
 '''T621# Inter-event GPS or DGPS Data (continued)
@@ -255,7 +285,7 @@ class T621x:
         self.timeObservation = timeObservation
 
 def getT621x(line):
-    t621x = T621x(line[5:5],line[6:9],line[10:10],line[11:15],line[16:20],line[21:25],line[26:55],line[74:80])
+    t621x = T621x(line[4:5],line[5:9],line[9:10],line[10:15],line[15:20],line[20:25],line[25:55],line[73:80])
     return t621x
 
 '''T6303 Inter-event TRANSIT Satellite Data
@@ -279,7 +309,7 @@ class T6303:
         self.timeObservation = timeObservation
 
 def getT6303(line):
-    t6303 = T6303(line[6:9],line[10:21],line[22:33],line[34:34],line[35:39],line[40:44],line[45:51])
+    t6303 = T6303(line[5:9],line[9:21],line[21:33],line[33:34],line[34:39],line[39:44],line[44:51])
     return t6303
 
 '''T6310 Updated GPS ephemerides & clock
@@ -312,7 +342,7 @@ class T6310:
         self.observation = observation
 
 def getT6310(line):
-    t6310 = T6310(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
+    t6310 = T6310(line[5:8],line[8:10],line[10:14],line[14:21],line[21:80])
     return t6310
 
 
@@ -336,7 +366,7 @@ class T6320:
         self.observation = observation
 
 def getT6320(line):
-    t6320 = T6320(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
+    t6320 = T6320(line[5:8],line[8:10],line[10:14],line[15:21],line[22:80])
     return t6320
 
 '''T6330 Updated Meteorological data
@@ -354,7 +384,7 @@ class T6330:
         self.observation = observation
 
 def getT6330(line):
-    t6330 = T6330(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
+    t6330 = T6330(line[5:8],line[9:10],line[11:14],line[15:21],line[22:80])
     return t6330
 
 '''T640# Inter-event Satellite Data (other systems)
@@ -394,15 +424,21 @@ Value 2 [42,55] A14
 Value 3 [56,69] A14
 System Time of Receipt [70,76] I2,I2,I3 HH,MM,SSs'''
 class T65xx:
-    def __init__(self,observationReferenceNumber,dataFieldNumber,qualityIndicator,timeObservation,observation):
-        self.observationReferenceNumber = observationReferenceNumber
-        self.dataFieldNumber = dataFieldNumber
-        self.qualityIndicator = qualityIndicator
-        self.timeObservation = timeObservation
-        self.observation = observation
+    def __init__(self,DCSIdentifier,correctionType,correctionSequence,GPSTime,DCSStatus,IOD,SVPRN,value1,value2,value3,timeReceipt):
+        self.DCSIdentifier = DCSIdentifier
+        self.correctionType = correctionType
+        self.correctionSequence = correctionSequence
+        self.GPSTime = GPSTime
+        self.DCSStatus = DCSStatus
+        self.IOD = IOD
+        self.SVPRN = SVPRN
+        self.value1 = value1
+        self.value2 = value2
+        self.value3 = value3
+        self.timeReceipt = timeReceipt
 
 def getT65xx(line):
-    t65xx = T65xx(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
+    t65xx = T65xx(line[3:5],line[5:9],line[9:11],line[11:19],line[19:21],line[21:24],line[24:27],line[27:41],line[41:55],line[55:69],line[69:76])
     return t65xx
 
 '''T67@0 Updated height aiding values
@@ -421,7 +457,7 @@ class T67x0:
         self.timeReceiptData = timeReceiptData
 
 def getT67x0(line):
-    t67x0 = T67x0(line[4:4],line[6:9],line[10:12],line[13:23],line[34:40])
+    t67x0 = T67x0(line[3:4],line[5:9],line[9:12],line[12:23],line[33:40])
     return t67x0
 
 #INTER-EVENT USER DEFINED DATA
@@ -441,5 +477,5 @@ class T7010:
         self.observation = observation
 
 def getT7010(line):
-    t7010 = T7010(line[6:8],line[9:10],line[11:14],line[15:21],line[22:80])
+    t7010 = T7010(line[5:8],line[8:10],line[10:14],line[14:21],line[21:80])
     return t7010

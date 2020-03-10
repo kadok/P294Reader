@@ -12,7 +12,7 @@ class H7000:
         self.observationSet = observationSet
     
 def getH7000(line):
-    h7000 = H7000(line[7:9],line[11:12],line[14:80])
+    h7000 = H7000(line[6:9],line[10:12],line[13:80])
     return h7000
 
 '''H7010 Data Field Definitions
@@ -29,7 +29,7 @@ class H7010:
         self.dataFieldDescription = dataFieldDescription
     
 def getH7010(line):
-    h7010 = H7010(line[7:9],line[11:12],line[14:15],line[17:80])
+    h7010 = H7010(line[6:9],line[10:12],line[13:15],line[16:80])
     return h7010
 
 '''H7020 User Defined Observation Parameters
@@ -45,7 +45,7 @@ class H7020:
         self.correction = correction
     
 def getH7020(line):
-    h7020 = H7020(line[7:9],line[11:12],line[14:14],line[16:80])
+    h7020 = H7020(line[6:9],line[10:12],line[13:14],line[15:80])
     return h7020
 
 '''H7021 Definition of Quality Indicator Type for User Defined Observations
@@ -60,5 +60,5 @@ class H7021:
         self.qualityIndicatorDefinition = qualityIndicatorDefinition
     
 def getH7021(line):
-    h7021 = H7021(line[7:9],line[11:12],line[14:80])
+    h7021 = H7021(line[6:9],line[10:12],line[13:80])
     return h7021
